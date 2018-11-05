@@ -9,7 +9,7 @@ const Auth = {
     const user = {
       id: ctx.db.users.length + 1,
       name,
-      email: email.toLowerCase(),
+      email,
       password: hashPassword,
     };
 
