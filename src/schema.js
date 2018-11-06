@@ -2,6 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   directive @lower on FIELD_DEFINITION
+  directive @isAuth on FIELD_DEFINITION
 
   type Query {
     notes: [Note!]!
@@ -40,7 +41,7 @@ const typeDefs = gql`
   type Note {
     id: ID!
     title: String!
-    text: String!
+    text: String! @isAuth
     author: User!
   }
 `;
