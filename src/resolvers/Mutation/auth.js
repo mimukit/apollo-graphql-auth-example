@@ -9,14 +9,15 @@ const Auth = {
     const user = {
       id: ctx.db.users.length + 1,
       name,
-      email,
+      email: email.toLowerCase(),
       password: hashPassword,
+      roles: ['USER'],
     };
 
     ctx.db.users.push(user);
 
     return {
-      token: AuthService.getToken({ id: user.id }),
+      token: AuthService.getToken({ id: user.id, roles: user.roles }),
       user,
     };
   },
@@ -34,7 +35,7 @@ const Auth = {
     }
 
     return {
-      token: AuthService.getToken({ id: user.id }),
+      token: AuthService.getToken({ id: user.id, roles: user.roles }),
       user,
     };
   },

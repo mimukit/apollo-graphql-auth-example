@@ -10,8 +10,8 @@ const AuthService = {
     }
 
     const token = tokenHeader.replace('Bearer ', '');
-    const { id } = jwt.verify(token, process.env.APP_SECRET);
-    return { id };
+    const data = jwt.verify(token, process.env.APP_SECRET);
+    return { ...data };
   },
 
   getHashPassword: async password => {

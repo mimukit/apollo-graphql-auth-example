@@ -3,6 +3,13 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   directive @lower on FIELD_DEFINITION
   directive @isAuth on FIELD_DEFINITION
+  directive @hasRole(role: Role = USER) on OBJECT | FIELD_DEFINITION
+
+  enum Role {
+    ADMIN
+    OWNER
+    USER
+  }
 
   type Query {
     notes: [Note!]!
@@ -35,12 +42,13 @@ const typeDefs = gql`
     id: ID!
     name: String!
     email: String! @lower
+    roles: [Role!]!
     notes: [Note!]
   }
 
   type Note {
     id: ID!
-    title: String!
+    title: String! @hasRole(role: USER)
     text: String! @isAuth
     author: User!
   }
