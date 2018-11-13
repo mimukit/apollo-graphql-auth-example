@@ -13,7 +13,7 @@ const {
 const AuthService = require('./services/AuthService');
 const { users, notes } = require('../db');
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
@@ -33,7 +33,4 @@ const server = new ApolloServer({
 });
 server.applyMiddleware({ app });
 
-app.listen({ port: PORT }, () =>
-  // eslint-disable-next-line
-  console.log(`Server ready at http://localhost:4000${server.graphqlPath}`),
-);
+app.listen({ port: PORT }, () => console.log('Server started'));
