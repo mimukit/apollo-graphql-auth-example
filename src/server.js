@@ -13,8 +13,6 @@ const {
 const AuthService = require('./services/AuthService');
 const { users, notes } = require('../db');
 
-const PORT = process.env.PORT || 4000;
-
 const app = express();
 
 const server = new ApolloServer({
@@ -33,4 +31,4 @@ const server = new ApolloServer({
 });
 server.applyMiddleware({ app });
 
-app.listen({ port: PORT }, () => console.log('Server started'));
+app.listen({ port: process.env.PORT }, () => console.log('Server started'));
