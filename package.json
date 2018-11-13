@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/server.js -e js,graphql",
-    "lint": "eslint server.js"
+    "start": "nodemon src/server.js -e js,graphql",
+    "lint": "eslint src/server.js"
   },
   "keywords": [],
   "author": "",
